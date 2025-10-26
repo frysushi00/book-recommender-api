@@ -45,3 +45,8 @@ def recommend(
         filtered = filtered[filtered["authors"].str.contains(authors, case=False, na=False)]
     
     return filtered.head(5).to_dict(orient="records")
+
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("main:app", host="0.0.0.0", port=port)
